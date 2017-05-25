@@ -8,7 +8,7 @@ const layouts           = require('express-ejs-layouts');
 const mongoose          = require('mongoose');
 const dotenv            = require('dotenv');
 const User              = require('./models/user-model');
-
+const io                = require('socket.io');
 
 dotenv.config();
 const client            = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
@@ -16,6 +16,7 @@ const client            = require('twilio')(process.env.ACCOUNTSID, process.env.
 mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
+const http              = require('http').Server(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +55,8 @@ app.use((req, res, next) => {
   err.status = 404;
   next(err);
 });
+
+
 
 // error handler
 app.use((err, req, res, next) => {

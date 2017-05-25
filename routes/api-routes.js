@@ -5,6 +5,7 @@ const Sms               = require('../models/sms-model');
 const el                = require('connect-ensure-login');
 const dbModel           = require('../models/sms-model');
 const http              = require('http');
+const twilio            = require('twilio');
 
 const client            = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
@@ -27,14 +28,22 @@ apiRoutes.post('/testsend', (req, res, next) => {
 apiRoutes.get('/response', (req, res, next) => {});
 
 apiRoutes.post('/response', (req, res, next) => {
-  const twiml            = new client.TwimlResponse();
-  twiml.message('Automagicical Response.');
-  res.writeHead(200, { 'Content-Type': 'text/xml' });
-  res.end(twiml.toString());
+  http.createServer((req, res) => {
+    var twiml             = new twilio.TwimlResponse();
+    twiml.message('Thanks for the text.');
+    res.writeHead(200, { 'Content-Type': 'text/xml' });
+    res.end(twiml.toString());
+  }).listen(1337);
 });
 
-http.createServer(app).listen(1337, function() {
-  console.log('Express Server Listening on Port 1337 for Twilio.');
+apiRoutes.post('/testresponse', (req, res, next) => {
+  http.createServer((req, res) => {
+    var twiml             = new twilio.TwimlResponse();
+    twiml.message('Thanks for the text.');
+    res.writeHead(200, { 'Content-Type': 'text/xml' });
+    res.end(twiml.toString());
+  }).listen(1337);
 });
+
 
 module.exports          = apiRoutes;
