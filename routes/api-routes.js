@@ -25,9 +25,9 @@ apiRoutes.post('/testsend', (req, res, next) => {
   });
 });
 
-apiRoutes.get('/response', (req, res, next) => {});
+apiRoutes.post('/response', (req, res, next) => {});
 
-apiRoutes.post('/response', (req, res, next) => {
+apiRoutes.get('/response', (req, res, next) => {
   http.createServer((req, res) => {
     var twiml             = new twilio.TwimlResponse();
     twiml.message('Thanks for the text.');
