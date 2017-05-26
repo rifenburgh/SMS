@@ -27,7 +27,8 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  res.send('<Response><Message>Hello</Message></Response>');
+  const from              = req.params.From;
+  res.send(`<Response><Message>Hello ${from}</Message></Response>`);
   /*
   const messageSid      = req.body.messageSid;
   console.log(messageSid);
