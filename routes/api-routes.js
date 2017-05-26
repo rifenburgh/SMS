@@ -30,7 +30,7 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  res.send(`<Response><Message>Hello</Message></Response>`);
+  // res.send(`<Response><Message>Hello</Message></Response>`);
 
   //Add SMS to Messages database
 
@@ -49,14 +49,13 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-  Customer.count({ phone: newItem.To }), function (err, count) {
-    if (count === 0) {
+  Customer.findOne({ phone: req.body.To }, function (err, count) {
       const newCustomer  = new Customer ({
         phone:         req.body.To
       });
       newCustomer.save();
     }
-  };
+  });
 
   /*
   newItem.save((err) => {
