@@ -51,8 +51,13 @@ apiRoutes.post('/response', (req, res, next) => {
   newItem.save();
   const fromPhone         = req.body.From;
   Customer.find({ phone: fromPhone }, function (err, count) {
-    console.log("Customer Phone was found.", count);
-    console.log("fromPhone ", fromPhone);
+    if (count === "") {
+      console.log("Customer does not currently exist.", count);
+    } else {
+      console.log("Customer already exists ", count);
+    }
+    // console.log("Customer Phone was found.", count);
+    // console.log("fromPhone ", fromPhone);
 
       const newCustomer  = new Customer ({
         phone:           req.body.From
