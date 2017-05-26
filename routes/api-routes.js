@@ -54,16 +54,16 @@ apiRoutes.post('/response', (req, res, next) => {
     console.log("Count Length ", count.length);
     if (count.length < 1) {
       console.log("Customer does not currently exist.", count);
+      const newCustomer  = new Customer ({
+        phone:           req.body.From
+      });
+      newCustomer.save();
     } else {
       console.log("Customer already exists ", count);
     }
     // console.log("Customer Phone was found.", count);
     // console.log("fromPhone ", fromPhone);
 
-      const newCustomer  = new Customer ({
-        phone:           req.body.From
-      });
-      newCustomer.save();
 
   });
 
