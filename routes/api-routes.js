@@ -3,6 +3,7 @@ const apiRoutes         = express.Router();
 const User              = require('../models/user-model');
 const Sms               = require('../models/sms-model');
 const Message           = require('../models/message-model');
+const Customer          = require('../models/customer-model');
 const el                = require('connect-ensure-login');
 const dbModel           = require('../models/sms-model');
 const http              = require('http');
@@ -29,7 +30,7 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  res.send(`<Response><Message>Hello ${}</Message></Response>`);
+  res.send(`<Response><Message>Hello</Message></Response>`);
 
   //Add SMS to Messages database
 
@@ -48,7 +49,13 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-
+  Customer.count({ phone: newItem.To }), function (err, count) {
+    if (count === 0) {
+      const newCustomer  = new Customer ({
+        phone:         req.body.To
+      });
+    }
+  };
 
   /*
   newItem.save((err) => {
