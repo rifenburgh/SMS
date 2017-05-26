@@ -7,7 +7,6 @@ const bodyParser        = require('body-parser');
 const layouts           = require('express-ejs-layouts');
 const mongoose          = require('mongoose');
 const dotenv            = require('dotenv');
-const bodyParser        = require('body-parser');
 const User              = require('./models/user-model');
 const io                = require('socket.io');
 
