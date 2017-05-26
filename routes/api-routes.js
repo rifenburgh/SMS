@@ -50,10 +50,13 @@ apiRoutes.post('/response', (req, res, next) => {
   promise.then((doc) => {});
   */
 
+  newItem.save();
+  /*
   newItem.save((err) => {
     if (err) {
       res.status(400).json({ message: "Something went wrong." });
     }
+    */
     res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
 
