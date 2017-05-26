@@ -30,10 +30,10 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
+  //Respond with a generic SMS message
   // res.send(`<Response><Message>Hello</Message></Response>`);
 
   //Add SMS to Messages database
-
   const newItem         = new Message({
     ToState:            req.body.ToState,
     SmsMessageSid:      req.body.SmsMessageSid,
@@ -49,6 +49,8 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
+
+  //If new number, create a new Customer database object
   const fromPhone         = req.body.From;
   Customer.find({ phone: fromPhone }, function (err, count) {
     console.log("Count Length ", count.length);
@@ -63,38 +65,25 @@ apiRoutes.post('/response', (req, res, next) => {
     }
     // console.log("Customer Phone was found.", count);
     // console.log("fromPhone ", fromPhone);
-
-
   });
-
-  /*
-  newItem.save((err) => {
-    if (err) {
-      res.status(400).json({ message: "Something went wrong." });
-    }
-    res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
-  });
-  */
-
-  //Add customer or add conversation to the customer's account
-
-  /*
-  const messageSid      = req.body.messageSid;
-  console.log(messageSid);
-  http.createServer((req, res) => {
-    const twiml         = new twilio.TwimlResponse();
-    twiml.message('SPR Response to your SMS.');
-    console.log(twiml.message);
-    res.writeHead(200, { 'Content-Type': 'text/xml' });
-    res.send(twiml.toString());
-  }).listen(1337, "https://radiant-forest-23151.herokuapp.com/");
-  */
 });
 
 apiRoutes.get('/response', (req, res, next) => {
   //console.log(req.body);
   console.log("From ", req.params.From);
   res.send('<Response><Message>Hello</Message></Response>');
+});
+
+apiRoutes.get('/listcustomers', (req, res, next) => {
+  //List All Customers in the Customer collection
+  Customer.find({}, (err, item) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json(items);
+    // res.render('listcustomers.ejs', { items: item });
+  });
 });
 
 apiRoutes.post('/testresponse', (req, res, next) => {
