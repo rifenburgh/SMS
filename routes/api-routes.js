@@ -107,6 +107,7 @@ apiRoutes.get('/listmessage/:from', (req, res, next) => {
       next(err);
       return;
     }
+    console.log('/listmessages/from', items);
     res.json(items);
     // res.render('listmessages.ejs', { items: item });
   });
