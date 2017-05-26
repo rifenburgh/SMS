@@ -54,6 +54,7 @@ apiRoutes.post('/response', (req, res, next) => {
       const newCustomer  = new Customer ({
         phone:         req.body.To
       });
+      newCustomer.save();
     }
   };
 
