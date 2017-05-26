@@ -49,10 +49,10 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-  const toPhone         = req.body.To;
-  Customer.find({ phone: toPhone }, function (err, count) {
+  const fromPhone         = req.body.From;
+  Customer.find({ phone: fromPhone }, function (err, count) {
     console.log("Customer Phone was found.", count);
-    console.log("toPhone ", toPhone);
+    console.log("fromPhone ", fromPhone);
 
       const newCustomer  = new Customer ({
         phone:           req.body.From
