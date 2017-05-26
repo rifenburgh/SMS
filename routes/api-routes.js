@@ -43,17 +43,19 @@ apiRoutes.post('/response', (req, res, next) => {
     AccountSid:         req.body.AccountSid,
     MessageSid:         req.body.MessageSid
   });
+  /*
   const promise         = newItem.save();
   assert.ok(promise instanceof require('mpromise'));
   promise.then((doc) => {});
-  /*
+  */
+
   newItem.save((err) => {
     if (err) {
       res.status(400).json({ message: "Something went wrong." });
     }
     res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
-  */
+  
   //Add customer or add conversation to the customer's account
   const fromPhone              = req.body.From;
   console.log("SMSSID:", SmsSid);
