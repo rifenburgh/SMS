@@ -6,6 +6,7 @@ const messageSchema      = ({
   ToCity:               String,
   FromState:            String,
   FromZip:              String,
+  From:                 String,
   SmsStatus:            String,
   FromCity:             String,
   Body:                 String,
