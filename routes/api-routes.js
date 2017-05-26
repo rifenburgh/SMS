@@ -31,29 +31,28 @@ apiRoutes.post('/response', (req, res, next) => {
   //Add SMS to Messages database
   const newItem         = new Message({
     ToState:            req.body.ToState,
-    SmsMessageSid:      req.body.SmsMessageSid,    
-    ToCity:             req.body.ToCity,        
-    FromState:          req.body.FromState,  
-    FromZip:            req.body.FromZip,  
-    SmsStatus:          req.body.SmsStatus,  
-    FromCity:           req.body.FromCity,  
-    Body:               req.body.Body,  
-    ToZip:              req.body.ToZip,  
-    To:                 req.body.To,  
-    AccountSid:         req.body.AccountSid,  
+    SmsMessageSid:      req.body.SmsMessageSid,
+    ToCity:             req.body.ToCity,
+    FromState:          req.body.FromState,
+    FromZip:            req.body.FromZip,
+    SmsStatus:          req.body.SmsStatus,
+    FromCity:           req.body.FromCity,
+    Body:               req.body.Body,
+    ToZip:              req.body.ToZip,
+    To:                 req.body.To,
+    AccountSid:         req.body.AccountSid,
     MessageSid:         req.body.MessageSid
   });
   newItem.save((err) => {
     if (err) {
       res.status(400).json({ message: "Something went wrong." });
     }
-
+    res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
   //Add customer or add conversation to the customer's account
   const fromPhone              = req.body.From;
   console.log("SMSSID:", SmsSid);
   console.log("REQ.BODY", req.body);
-  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
   /*
   const messageSid      = req.body.messageSid;
