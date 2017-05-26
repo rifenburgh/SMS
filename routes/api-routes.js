@@ -88,7 +88,7 @@ apiRoutes.get('/listcustomers', (req, res, next) => {
 });
 
 apiRoutes.get('/listmessages', (req, res, next) => {
-  Messages.find({}, (err, items) => {
+  Message.find({}, (err, items) => {
     if (err) {
       next(err);
       return;
@@ -100,7 +100,7 @@ apiRoutes.get('/listmessages', (req, res, next) => {
 
 api.Routes.get('/listmessages/:from', (req, res, next) => {
   const fromPhone             = req.params.from;
-  Messages.find({ phone: fromPhone }, (err, items) => {
+  Message.find({ phone: fromPhone }, (err, items) => {
     if (err) {
       next(err);
       return;
