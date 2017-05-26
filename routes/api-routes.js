@@ -7,6 +7,7 @@ const el                = require('connect-ensure-login');
 const dbModel           = require('../models/sms-model');
 const http              = require('http');
 const twilio            = require('twilio');
+const mongoose          = require('mongoose');
 
 
 const client            = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
@@ -55,7 +56,7 @@ apiRoutes.post('/response', (req, res, next) => {
     }
     res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
-  
+
   //Add customer or add conversation to the customer's account
   const fromPhone              = req.body.From;
   console.log("SMSSID:", SmsSid);
