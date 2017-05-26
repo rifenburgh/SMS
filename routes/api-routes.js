@@ -102,7 +102,7 @@ apiRoutes.get('/listmessages', (req, res, next) => {
 apiRoutes.get('/listmessage/:from', (req, res, next) => {
   const fromPhone             = req.params.from;
   console.log("/listmes/from", fromPhone);
-  Message.find({ 'phone': fromPhone }, (err, items) => {
+  Message.find({ 'From': fromPhone }, (err, items) => {
     if (err) {
       next(err);
       return;
