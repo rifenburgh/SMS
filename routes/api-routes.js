@@ -50,10 +50,12 @@ apiRoutes.post('/response', (req, res, next) => {
   });
   newItem.save();
   Customer.findOne({ phone: req.body.From }, function (err, count) {
-      const newCustomer  = new Customer ({
-        phone:         req.body.From
-      });
-      newCustomer.save();
+      if (err) {
+        const newCustomer  = new Customer ({
+          phone:         req.body.From
+        });
+        newCustomer.save();
+      }
   });
 
   /*
