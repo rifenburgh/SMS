@@ -76,16 +76,40 @@ apiRoutes.get('/response', (req, res, next) => {
 
 apiRoutes.get('/listcustomers', (req, res, next) => {
   //List All Customers in the Customer collection
-  Customer.find({}, (err, item) => {
+  Customer.find({}, (err, items) => {
     if (err) {
       next(err);
       return;
     }
-    res.json(item);
+    res.json(items);
 
     // res.render('listcustomers.ejs', { items: item });
   });
 });
+
+apiRoutes.get('/listmessages', (req, res, next) => {
+  Messages.find({}, (err, items) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json(items);
+    //res.render('listmessages.ejs', { items: item });
+  });
+});
+
+api.Routes.get('/listmessages/:from', (req, res, next) => {
+  const fromPhone             = req.params.from;
+  Messages.find({ phone: fromPhone }, (err, items) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json(items);
+    // res.render('listmessages.ejs', { items: item });
+  });
+});
+
 
 apiRoutes.post('/testresponse', (req, res, next) => {
   http.createServer((req, res) => {

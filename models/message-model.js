@@ -12,7 +12,8 @@ const messageSchema      = ({
   ToZip:                String,
   To:                   String,
   AccountSid:           String,
-  MessageSid:           String
+  MessageSid:           String,
+  created:              { type: Date, default: Date.now }
 });
 
 const Message           = mongoose.model('Message', messageSchema);
