@@ -29,7 +29,7 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  //res.send(`<Response><Message>Hello ${}</Message></Response>`);
+  res.send(`<Response><Message>Hello ${}</Message></Response>`);
 
   //Add SMS to Messages database
 
@@ -48,7 +48,7 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-  
+
 
   /*
   newItem.save((err) => {
