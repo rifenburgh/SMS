@@ -33,7 +33,7 @@ apiRoutes.post('/response', (req, res, next) => {
     twiml.message('SPR Response to your SMS.');
     res.writeHead(200, { 'Content-Type': 'text/xml' });
     res.end(twiml.toString());
-  }).listen(1337);
+  }).listen(1337, "https://radiant-forest-23151.herokuapp.com/");
 });
 
 apiRoutes.get('/response', (req, res, next) => {
