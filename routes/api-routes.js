@@ -50,10 +50,10 @@ apiRoutes.post('/response', (req, res, next) => {
   });
   newItem.save();
   const toPhone         = req.body.To;
-  Customer.findOne({ phone: toPhone }, function (err, count) {
+  Customer.find({ phone: toPhone }, function (err, count) {
     console.log("Customer Phone was found.", count);
       const newCustomer  = new Customer ({
-        phone:         req.body.From
+        phone:           req.body.From
       });
       newCustomer.save();
 
