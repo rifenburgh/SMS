@@ -32,6 +32,7 @@ apiRoutes.post('/response', (req, res, next) => {
   res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
   //Add SMS to Messages database
+  /*
   const newItem         = new Message({
     ToState:            req.body.ToState,
     SmsMessageSid:      req.body.SmsMessageSid,
@@ -46,13 +47,9 @@ apiRoutes.post('/response', (req, res, next) => {
     AccountSid:         req.body.AccountSid,
     MessageSid:         req.body.MessageSid
   });
-  /*
-  const promise         = newItem.save();
-  assert.ok(promise instanceof require('mpromise'));
-  promise.then((doc) => {});
+  newItem.save();
   */
 
-  newItem.save();
   /*
   newItem.save((err) => {
     if (err) {
