@@ -42,8 +42,9 @@ apiRoutes.post('/response', (req, res, next) => {
 });
 
 apiRoutes.get('/response', (req, res, next) => {
-
-  res.send('<Response><Message>Hello ' + req.body.From + '</Message></Response>');
+  console.log(req.body);
+  console.log(req.body.From);
+  res.send('<Response><Message>Hello</Message></Response>');
 });
 
 apiRoutes.post('/testresponse', (req, res, next) => {
