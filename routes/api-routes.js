@@ -62,9 +62,6 @@ apiRoutes.post('/response', (req, res, next) => {
   res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
   //Add customer or add conversation to the customer's account
-  const fromPhone              = req.body.From;
-  console.log("SMSSID:", SmsSid);
-  console.log("REQ.BODY", req.body);
 
   /*
   const messageSid      = req.body.messageSid;
