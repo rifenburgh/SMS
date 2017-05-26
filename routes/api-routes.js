@@ -49,9 +49,9 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-  Customer.findOne({ phone: req.body.To }, function (err, count) {
+  Customer.findOne({ phone: req.body.From }, function (err, count) {
       const newCustomer  = new Customer ({
-        phone:         req.body.To
+        phone:         req.body.From
       });
       newCustomer.save();
   });
