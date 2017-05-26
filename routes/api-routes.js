@@ -29,6 +29,8 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
+  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
+
   //Add SMS to Messages database
   const newItem         = new Message({
     ToState:            req.body.ToState,
@@ -59,7 +61,6 @@ apiRoutes.post('/response', (req, res, next) => {
     res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
   */
-  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
   //Add customer or add conversation to the customer's account
 
