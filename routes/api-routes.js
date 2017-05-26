@@ -2,6 +2,7 @@ const express           = require('express');
 const apiRoutes         = express.Router();
 const User              = require('../models/user-model');
 const Sms               = require('../models/sms-model');
+const Message           = require('../models/message-model');
 const el                = require('connect-ensure-login');
 const dbModel           = require('../models/sms-model');
 const http              = require('http');
@@ -27,11 +28,33 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  const SmsSid              = req.body.From;
+  //Add SMS to Messages database
+  const newItem         = new Message({
+    ToState:            req.body.ToState,
+    SmsMessageSid:      req.body.SmsMessageSid,    
+    ToCity:             req.body.ToCity,        
+    FromState:          req.body.FromState,  
+    FromZip:            req.body.FromZip,  
+    SmsStatus:          req.body.SmsStatus,  
+    FromCity:           req.body.FromCity,  
+    Body:               req.body.Body,  
+    ToZip:              req.body.ToZip,  
+    To:                 req.body.To,  
+    AccountSid:         req.body.AccountSid,  
+    MessageSid:         req.body.MessageSid
+  });
+  newItem.save((err) => {
+    if (err) {
+      res.status(400).json({ message: "Something went wrong." });
+    }
+
+  });
+  //Add customer or add conversation to the customer's account
+  const fromPhone              = req.body.From;
   console.log("SMSSID:", SmsSid);
   console.log("REQ.BODY", req.body);
+  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
-  res.send(`<Response><Message>Hello ${SmsSid}</Message></Response>`);
   /*
   const messageSid      = req.body.messageSid;
   console.log(messageSid);
