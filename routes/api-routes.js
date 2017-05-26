@@ -52,6 +52,8 @@ apiRoutes.post('/response', (req, res, next) => {
   const toPhone         = req.body.To;
   Customer.find({ phone: toPhone }, function (err, count) {
     console.log("Customer Phone was found.", count);
+    console.log("toPhone ", toPhone);
+
       const newCustomer  = new Customer ({
         phone:           req.body.From
       });
