@@ -28,6 +28,8 @@ apiRoutes.post('/testsend', (req, res, next) => {
 
 apiRoutes.post('/response', (req, res, next) => {
   const SmsSid              = req.params.SmsSid;
+  console.log("SMSSID:", SmsSid);
+  console.log("REQ.PARAMS", req.params);
   res.send(`<Response><Message>Hello ${SmsSid}</Message></Response>`);
   /*
   const messageSid      = req.body.messageSid;
