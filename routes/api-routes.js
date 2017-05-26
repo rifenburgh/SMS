@@ -56,9 +56,10 @@ apiRoutes.post('/response', (req, res, next) => {
     if (err) {
       res.status(400).json({ message: "Something went wrong." });
     }
-    */
     res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
   });
+  */
+  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
 
   //Add customer or add conversation to the customer's account
   const fromPhone              = req.body.From;
