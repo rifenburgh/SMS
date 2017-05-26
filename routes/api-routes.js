@@ -29,10 +29,10 @@ apiRoutes.post('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/response', (req, res, next) => {
-  res.send(`<Response><Message>Hello ${fromPhone}</Message></Response>`);
+  //res.send(`<Response><Message>Hello ${}</Message></Response>`);
 
   //Add SMS to Messages database
-  /*
+
   const newItem         = new Message({
     ToState:            req.body.ToState,
     SmsMessageSid:      req.body.SmsMessageSid,
@@ -48,7 +48,7 @@ apiRoutes.post('/response', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newItem.save();
-  */
+  
 
   /*
   newItem.save((err) => {
