@@ -81,7 +81,8 @@ apiRoutes.get('/listcustomers', (req, res, next) => {
       next(err);
       return;
     }
-    res.json(items);
+    res.json(item);
+
     // res.render('listcustomers.ejs', { items: item });
   });
 });
