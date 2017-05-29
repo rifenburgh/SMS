@@ -20,6 +20,12 @@ apiRoutes.get('/testsend', (req, res, next) => {
 apiRoutes.post('/testsend', (req, res, next) => {
   const text            = req.body.text;
   const phone           = req.body.phone;
+  const newMessage      = new Message({
+    Body:               req.body.text,
+    phone:              process.env.TO,
+    customer:           false
+  });
+  newMessage.save();
   client.messages.create({
     to: process.env.TO,
     from: process.env.FROM,
@@ -41,6 +47,7 @@ apiRoutes.post('/response', (req, res, next) => {
     FromState:          req.body.FromState,
     FromZip:            req.body.FromZip,
     From:               req.body.From,
+    phone:              req.body.From,  //phone is used to identify customer in message and customer models
     SmsStatus:          req.body.SmsStatus,
     FromCity:           req.body.FromCity,
     Body:               req.body.Body,

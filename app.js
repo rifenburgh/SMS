@@ -9,6 +9,8 @@ const mongoose          = require('mongoose');
 const dotenv            = require('dotenv');
 const User              = require('./models/user-model');
 const io                = require('socket.io');
+const cors              = require('cors');
+
 
 dotenv.config();
 const client            = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
@@ -33,6 +35,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+//Disable CORS in Production environment
+if (process.env.NODE_ENV !== 'production') {
+  app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:4200', 'http://localhost:8000']
+  }));
+}
 /*
 client.messages.create({
   to: process.env.TO,

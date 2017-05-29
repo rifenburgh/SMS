@@ -14,6 +14,8 @@ const messageSchema      = ({
   To:                   String,
   AccountSid:           String,
   MessageSid:           String,
+  phone:                String,
+  customer:             { type: Boolean, default: true },
   created:              { type: Date, default: Date.now }
 });
 
