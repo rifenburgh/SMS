@@ -11,7 +11,8 @@ import { MessageService } from '../services/message.service';
 export class MessageComponent implements OnInit {
 
   // items:               Array<any>;
-  items:               Object;
+  items:                Object;
+  messages:             Object;
 
   constructor(
     private myHttp:     Http,
@@ -26,6 +27,13 @@ export class MessageComponent implements OnInit {
       });
   }
 
+  listmessage(phone) {
+    this.myMessage.listmessage(phone)
+      .then((item) => {
+        this.messages = item;
+        console.log('/listmessages/:phone', this.messages);
+      });
+  }
 
 
 

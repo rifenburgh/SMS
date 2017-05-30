@@ -18,4 +18,11 @@ export class MessageService {
       .then(apiResponse => apiResponse.json())
   }
 
+  listmessage(phone) {
+    const options       = { withCredentials: true };
+    return this.myHttp.get(`${this.BASE_URL}/api/listmessage/${phone}`)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
+
 }

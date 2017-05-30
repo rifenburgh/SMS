@@ -2,5 +2,8 @@
   message works!
 </p>
 <div *ngFor="let item of items">
-  <p>Customer: {{ item.phone }}</p>
+  <p (click)="listmessage(item.phone)">Customer: {{ item.phone }}</p>
+</div>
+<div *ngFor="let message of messages">
+  <br>{{ message.Body }}
 </div>
