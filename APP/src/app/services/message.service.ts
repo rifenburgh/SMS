@@ -5,7 +5,9 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class MessageService {
   BASE_URL: string      = 'http://localhost:3000';
-
+  text: string          = '';
+  phone: string         = '';
+  sms: Object           = {};
 
   constructor(
     private myHttp:     Http
@@ -24,5 +26,12 @@ export class MessageService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
-
+  sendtext(text, phone) {
+    console.log('service/sendtext/text', text);
+    console.log('service/sendtext/phone', phone);
+    const options       = { withCredentials: true };
+    return this.myHttp.post(`${this.BASE_URL}/api/sendtext`, text, options)
+      .toPromise(text)
+      .then(apiResponse => apiResponse.json())
+  }
 }

@@ -17,6 +17,27 @@ apiRoutes.get('/testsend', (req, res, next) => {
   res.render('testsend.ejs');
 });
 
+apiRoutes.post('/sendtext', (req, res, next) => {
+  console.log('/sendtext/req.body', req.body);
+  console.log('/api/sendtext/text', req.body.text);
+  const text            = req.body.text;
+  const phone           = req.body.phone;
+  const newMessage      = new Message({
+    Body:               req.body.text,
+    phone:              process.env.TO,
+    customer:           false
+  });
+  newMessage.save();
+  client.messages.create({
+    to: process.env.TO,
+    from: process.env.FROM,
+    body: phone + ' - ' + text,
+  }, (err, message) => {
+    console.log('SMS Sent');
+  });
+});
+
+
 apiRoutes.post('/testsend', (req, res, next) => {
   const text            = req.body.text;
   const phone           = req.body.phone;

@@ -1,9 +1,23 @@
-<p>
-  message works!
-</p>
-<div *ngFor="let item of items">
-  <p (click)="listmessage(item.phone)">Customer: {{ item.phone }}</p>
+<h3>Manage Customer Messages</h3>
+<form>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div *ngFor="let item of items" class="col-sm-4">
+    Current Customers:
+    <p (click)="listmessage(item.phone)">{{ item.phone }}</p>
+  </div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-4">
+    <p *ngFor="let message of messages">{{ message.Body }} | {{ message.customer}} | {{ message.From }}</p>
+    <div>
+      <input name=text [(ngModel)]="text" label="Message">
+      <button class="btn btn-primary" (click)="sendmessage(text, phone)">Send Text</button>
+    </div>
+
+  </div>
+  <div class="col-sm-2"></div>
+
 </div>
-<div *ngFor="let message of messages">
-  <br>{{ message.Body }}
-</div>
+
+
+</form>

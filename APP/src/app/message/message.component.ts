@@ -13,6 +13,8 @@ export class MessageComponent implements OnInit {
   // items:               Array<any>;
   items:                Object;
   messages:             Object;
+  text:                 String;
+  phone:                String
 
   constructor(
     private myHttp:     Http,
@@ -22,7 +24,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {
     this.myMessage.allcustomers()
       .then((item) => {
-        this.items = item;
+        this.items    = item;
         console.log('/allcustomers', this.items);
       });
   }
@@ -34,7 +36,9 @@ export class MessageComponent implements OnInit {
         console.log('/listmessages/:phone', this.messages);
       });
   }
-
+  sendmessage(text, phone) {
+    this.myMessage.sendtext(text, phone)
+  }
 
 
 }
