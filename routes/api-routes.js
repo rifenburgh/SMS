@@ -25,7 +25,18 @@ apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
   const newMessage      = new Message({
     Body:               text,
     phone:              phone,
-    customer:           false
+    customer:           false,
+    ToState:            req.body.ToState,
+    SmsMessageSid:      req.body.SmsMessageSid,
+    ToCity:             req.body.ToCity,
+    FromState:          req.body.FromState,
+    FromZip:            req.body.FromZip,
+    SmsStatus:          req.body.SmsStatus,
+    FromCity:           req.body.FromCity,
+    ToZip:              req.body.ToZip,
+    To:                 req.body.To,
+    AccountSid:         req.body.AccountSid,
+    MessageSid:         req.body.MessageSid
   });
   newMessage.save();
   client.messages.create({
