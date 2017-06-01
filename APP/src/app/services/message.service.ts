@@ -30,7 +30,7 @@ export class MessageService {
     console.log('service/sendtext/text', text);
     console.log('service/sendtext/phone', phone);
     const options       = { withCredentials: true };
-    return this.myHttp.post(`${this.BASE_URL}/api/sendtext`, text, options)
+    return this.myHttp.post(`${this.BASE_URL}/api/sendtext/${this.phone}/${this.text}`, options)
       .toPromise(text)
       .then(apiResponse => apiResponse.json())
   }

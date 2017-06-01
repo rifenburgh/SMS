@@ -38,6 +38,9 @@ export class MessageComponent implements OnInit {
   }
   sendmessage(text, phone) {
     this.myMessage.sendtext(text, phone)
+      .then((item) => {
+        console.log('component/sendmessage');
+      });
   }
 
 

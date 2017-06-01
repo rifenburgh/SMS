@@ -17,44 +17,44 @@ apiRoutes.get('/testsend', (req, res, next) => {
   res.render('testsend.ejs');
 });
 
-apiRoutes.post('/sendtext', (req, res, next) => {
+apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
   console.log('/sendtext/req.body', req.body);
   console.log('/api/sendtext/text', req.body.text);
-  const text            = req.body.text;
-  const phone           = req.body.phone;
+  const phone           = req.params.phone;
+  const text            = req.params.text;
   const newMessage      = new Message({
-    Body:               req.body.text,
-    phone:              process.env.TO,
+    Body:               text,
+    phone:              phone,
     customer:           false
   });
   newMessage.save();
   client.messages.create({
-    to: process.env.TO,
+    to: phone,
     from: process.env.FROM,
-    body: phone + ' - ' + text,
+    body: text,
   }, (err, message) => {
     console.log('SMS Sent');
   });
 });
 
 
-apiRoutes.post('/testsend', (req, res, next) => {
-  const text            = req.body.text;
-  const phone           = req.body.phone;
-  const newMessage      = new Message({
-    Body:               req.body.text,
-    phone:              process.env.TO,
-    customer:           false
-  });
-  newMessage.save();
-  client.messages.create({
-    to: process.env.TO,
-    from: process.env.FROM,
-    body: phone + ' - ' + text,
-  }, (err, message) => {
-    console.log('SMS Sent');
-  });
-});
+// apiRoutes.post('/testsend', (req, res, next) => {
+//   const text            = req.body.text;
+//   const phone           = req.body.phone;
+//   const newMessage      = new Message({
+//     Body:               req.body.text,
+//     phone:              process.env.TO,
+//     customer:           false
+//   });
+//   newMessage.save();
+//   client.messages.create({
+//     to: process.env.TO,
+//     from: process.env.FROM,
+//     body: phone + ' - ' + text,
+//   }, (err, message) => {
+//     console.log('SMS Sent');
+//   });
+// });
 
 apiRoutes.post('/response', (req, res, next) => {
   //Respond with a generic SMS message
@@ -129,13 +129,13 @@ apiRoutes.get('/listmessages', (req, res, next) => {
 
 apiRoutes.get('/listmessage/:from', (req, res, next) => {
   const fromPhone             = req.params.from;
-  console.log("/listmes/from", fromPhone);
+  // console.log("/listmes/from", fromPhone);
   Message.find({ 'From': fromPhone }, (err, items) => {
     if (err) {
       next(err);
       return;
     }
-    console.log('/listmessages/from', items);
+    // console.log('/listmessages/from', items);
     res.json(items);
     // res.render('listmessages.ejs', { items: item });
   });
