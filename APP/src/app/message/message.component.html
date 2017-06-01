@@ -12,7 +12,7 @@
     <p *ngFor="let message of messages">{{ message.Body }} | {{ message.customer}} | {{ message.From }}</p>
     <div>
       <input name=text [(ngModel)]="text" label="Message">
-      <button class="btn btn-primary" (click)="sendmessage(text, phone)">Send Text</button>
+      <button class="btn btn-primary" (click)="sendmessage(text)">Send Text</button>
     </div>
 
   </div>

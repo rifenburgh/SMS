@@ -14,7 +14,7 @@ export class MessageComponent implements OnInit {
   items:                Object;
   messages:             Object;
   text:                 String;
-  phone:                String
+  phone:                String;
 
   constructor(
     private myHttp:     Http,
@@ -30,16 +30,19 @@ export class MessageComponent implements OnInit {
   }
 
   listmessage(phone) {
+    this.phone = phone;
     this.myMessage.listmessage(phone)
       .then((item) => {
         this.messages = item;
-        console.log('/listmessages/:phone', this.messages);
+        console.log('/component/listmessage/this.phone', phone, this.phone);
+        // console.log('/listmessages/:phone', this.messages);
       });
   }
-  sendmessage(text, phone) {
-    this.myMessage.sendtext(text, phone)
+  sendmessage(text) {
+    console.log('component/sendmessage/phone', this.phone);
+    this.myMessage.sendtext(text, this.phone)
       .then((item) => {
-        console.log('component/sendmessage');
+        console.log('component/sendmessage', this.phone);
       });
   }
 
