@@ -38,6 +38,11 @@ export class MessageComponent implements OnInit {
         // console.log('/listmessages/:phone', this.messages);
       });
   }
+
+  editcustomer(phone) {
+    this.phone = phone;
+    
+  }
   sendmessage(text) {
     console.log('component/sendmessage/phone', this.phone);
     this.myMessage.sendtext(text, this.phone)
