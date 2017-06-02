@@ -9,7 +9,7 @@
   <div class="col-sm-1"></div>
   <div class="col-sm-4">
     <h3>Recent Messages</h3>
-    <p *ngFor="let message of messages">{{ message.Body }} | {{ message.customer}} | {{ message.From }}</p>
+    <p *ngFor="let message of messages">{{ message.Body }} | {{ message.customer}} | {{ message.phone }}</p>
     <div>
       <input name=text [(ngModel)]="text" label="Message">
       <button class="btn btn-primary" (click)="sendmessage(text)">Send Text</button>
