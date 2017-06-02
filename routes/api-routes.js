@@ -23,8 +23,8 @@ apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
   const phone           = req.params.phone;
   const text            = req.params.text;
   const newMessage      = new Message({
-    Body:               text,
-    phone:              phone,
+    Body:               req.params.text,
+    phone:              req.params.phone,
     customer:           false,
     ToState:            req.body.ToState,
     SmsMessageSid:      req.body.SmsMessageSid,

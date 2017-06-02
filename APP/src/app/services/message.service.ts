@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MessageService {
-  BASE_URL: string      = 'http://localhost:3000';
+  BASE_URL: string      = 'http://localhost:3000' || 'https://radiant-forest-23151.herokuapp.com';
   text: string          = '';
   phone: string         = '';
   sms: Object           = {};
