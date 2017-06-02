@@ -18,7 +18,7 @@ apiRoutes.get('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
-  // console.log('/api/sendtext/text', req.body.text);
+  console.log('/api/sendtext/text', req.params.phone + '/' + req.params.text);
   const newMessage      = new Message({
     Body:               req.params.text,
     phone:              req.params.phone,
