@@ -18,9 +18,7 @@ apiRoutes.get('/testsend', (req, res, next) => {
 });
 
 apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
-  console.log('/api/sendtext/text', req.body.text);
-  const phone           = req.params.phone;
-  const text            = req.params.text;
+  // console.log('/api/sendtext/text', req.body.text);
   const newMessage      = new Message({
     Body:               req.params.text,
     phone:              req.params.phone,
@@ -38,6 +36,8 @@ apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
     MessageSid:         req.body.MessageSid
   });
   newMessage.save();
+  const phone           = req.params.phone;
+  const text            = req.params.text;
   client.messages.create({
     to: phone,
     from: process.env.FROM,
