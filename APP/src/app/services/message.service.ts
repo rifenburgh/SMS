@@ -4,8 +4,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MessageService {
-  // BASE_URL: string      = 'http://localhost:3000';
-  BASE_URL: string      = 'https://radiant-forest-23151.herokuapp.com';
+  BASE_URL: string      = 'http://localhost:3000';
+  // BASE_URL: string      = 'https://radiant-forest-23151.herokuapp.com';
 
   text: string          = '';
   phone: string         = '';
@@ -28,6 +28,7 @@ export class MessageService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+
   sendtext(text, phone) {
     console.log('service/sendtext/text', text);
     console.log('service/sendtext/phone', phone );
@@ -36,4 +37,12 @@ export class MessageService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+
+  editcustomer(id) {
+    const options       = { withCredentials: true };
+    return this.myHttp.get(`${this.BASE_URL}/api/editcustomer/${id}`, options)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  } 
+
 }

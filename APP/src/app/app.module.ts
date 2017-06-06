@@ -7,11 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { MessageService } from './services/message.service';
+import { EditComponent } from './edit/edit.component';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageComponent
+    MessageComponent,
+    EditComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

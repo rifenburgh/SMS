@@ -41,7 +41,7 @@ export class MessageComponent implements OnInit {
 
   editcustomer(phone) {
     this.phone = phone;
-    
+
   }
   sendmessage(text) {
     console.log('component/sendmessage/phone', this.phone);
@@ -49,6 +49,8 @@ export class MessageComponent implements OnInit {
       .then((item) => {
         console.log('component/sendmessage', this.phone);
       });
+    //location.reload();
+    this.listmessage(this.phone);
   }
 
 

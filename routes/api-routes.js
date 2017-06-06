@@ -126,6 +126,18 @@ apiRoutes.get('/listcustomers', (req, res, next) => {
   });
 });
 
+apiRoutes.get('/editcustomer/:id', (req, res, next) => {
+  const theId                 = req.params.id;
+  Customer.find({ _id: theId }, (err, items) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json(items);
+  });
+});
+
+
 apiRoutes.get('/listmessages', (req, res, next) => {
   Message.find({}, (err, items) => {
     if (err) {
