@@ -48,23 +48,53 @@ apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
 });
 
 
-// apiRoutes.post('/testsend', (req, res, next) => {
-//   const text            = req.body.text;
-//   const phone           = req.body.phone;
-//   const newMessage      = new Message({
-//     Body:               req.body.text,
-//     phone:              process.env.TO,
-//     customer:           false
-//   });
-//   newMessage.save();
-//   client.messages.create({
-//     to: process.env.TO,
-//     from: process.env.FROM,
-//     body: phone + ' - ' + text,
-//   }, (err, message) => {
-//     console.log('SMS Sent');
-//   });
-// });
+apiRoutes.post('/addcustomer', (req, res, next) => {
+  console.log('/api/addcustomer/req.info.phone', req.body.phone);
+  const newItem2          = new Customer({
+    phone:                req.body.phone,
+    firstname:            req.body.firstname,
+    lastname:             req.body.lastname,
+    email:                req.body.email,
+    address:              req.body.address,
+    addresss2:            req.body.address2,
+    city:                 req.body.city,
+    state:                req.body.state,
+    zip:                  req.body.zip,
+    notes:                req.body.notes,
+    price:                req.body.price,
+    duedate:              req.body.duedate
+  });
+  console.log('/api/addcustomers/newItem', newItem2);
+  // newItem.save();
+  const fromPhone         = req.body.phone;
+  Customer.find({ phone: fromPhone }, function (err, count) {
+    console.log("Count Length ", count.length);
+    if (count.length < 1) {
+      console.log("Customer does not currently exist.", count);
+      const newItem           = new Customer({
+        phone:                req.body.phone,
+        firstname:            req.body.firstname,
+        lastname:             req.body.lastname,
+        email:                req.body.email,
+        address:              req.body.address,
+        addresss2:            req.body.address2,
+        city:                 req.body.city,
+        state:                req.body.state,
+        zip:                  req.body.zip,
+        notes:                req.body.notes,
+        price:                req.body.price,
+        duedate:              req.body.duedate
+      });
+
+      newItem.save();
+    } else {
+      console.log("Customer already exists ", count);
+    }
+    // console.log("Customer Phone was found.", count);
+    // console.log("fromPhone ", fromPhone);
+  });
+});
+
 
 apiRoutes.post('/response', (req, res, next) => {
   //Respond with a generic SMS message

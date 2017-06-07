@@ -18,10 +18,6 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.myMessage.editcustomer()
-      .then((item) => {
-        this.items      = item;
-      });
   }
 
 }

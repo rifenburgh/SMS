@@ -5,43 +5,52 @@
   <h3>Add New Contact</h3>
   <table class="table">
     <tr>
-      <td>Firstname</td>
-      <td></td>
+      <td>First Name</td>
+      <td><input  type="text" [(ngModel)]="formInfo.firstname" name="firstname" placeholder="" ></td>
     </tr>
     <tr>
-      <td>Lastname</td>
-      <td></td>
+      <td>Last Name</td>
+      <td><input  type="text" [(ngModel)]="formInfo.lastanme" name="lastname" placeholder="" ></td>
     </tr>
     <tr>
       <td>Phone</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="+15619876543" required></td>
     </tr>
     <tr>
       <td>Email</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.email" name="email" placeholder="" ></td>
     </tr>
     <tr>
       <td>Address 1</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.address" name="address" placeholder="" ></td>
     </tr>
     <tr>
       <td>Address 2</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.address2" name="address2" placeholder="" ></td>
     </tr>
     <tr>
       <td>City</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.city" name="city" placeholder="" ></td>
     </tr>
     <tr>
       <td>State</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.state" name="state" placeholder="" ></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input  type="text" [(ngModel)]="formInfo.price" name="price" placeholder="" ></td>
+    </tr>
+    <tr>
+      <td>Due Date</td>
+      <td><input  type="text" [(ngModel)]="formInfo.duedate" name="duedate" placeholder="" ></td>
     </tr>
     <tr>
       <td>Notes</td>
-      <td></td>
+      <td><input  type="text" [(ngModel)]="formInfo.notes" name="notes" placeholder="" ></td>
     </tr>
 
   </table>
+  <button class="btn btn-primary" (click)=addcustomer(formInfo)>Add Contact</button>
 </div>
 <div class="col-sm-4"></div>
 <div class="col-sm-1"></div>

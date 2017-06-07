@@ -10,9 +10,11 @@ const customerSchema    = ({
   city:                 String,
   state:                String,
   zip:                  String,
-  notes:                String
+  notes:                String,
+  price:                String,
+  duedate:              String
   //Include Cake Details
-  //Include Delivery Address 
+  //Include Delivery Address
   //Include Delivery Time
 
 });

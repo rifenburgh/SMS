@@ -10,6 +10,7 @@ export class MessageService {
   text: string          = '';
   phone: string         = '';
   sms: Object           = {};
+  formInfo: Object      = {};
 
   constructor(
     private myHttp:     Http
@@ -43,6 +44,14 @@ export class MessageService {
     return this.myHttp.get(`${this.BASE_URL}/api/editcustomer/${id}`, options)
       .toPromise()
       .then(apiResponse => apiResponse.json())
-  } 
+  }
+
+  addcustomer(info) {
+    console.log('message.service/addcustomer/info', info);
+    const options       = { withCredentials: true };
+    return this.myHttp.post(`${this.BASE_URL}/api/addcustomer`, options)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
 
 }
