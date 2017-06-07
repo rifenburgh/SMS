@@ -49,6 +49,8 @@ apiRoutes.post('/sendtext/:phone/:text', (req, res, next) => {
 
 
 apiRoutes.post('/addcustomer', (req, res, next) => {
+  console.log('api/addcustomer/starting');
+
   console.log('/api/addcustomer/req.info.phone', req.body.phone);
   const newItem2          = new Customer({
     phone:                req.body.phone,
@@ -66,6 +68,7 @@ apiRoutes.post('/addcustomer', (req, res, next) => {
   });
   console.log('/api/addcustomers/newItem', newItem2);
   // newItem.save();
+
   const fromPhone         = req.body.phone;
   Customer.find({ phone: fromPhone }, function (err, count) {
     console.log("Count Length ", count.length);
@@ -93,6 +96,7 @@ apiRoutes.post('/addcustomer', (req, res, next) => {
     // console.log("Customer Phone was found.", count);
     // console.log("fromPhone ", fromPhone);
   });
+  
 });
 
 

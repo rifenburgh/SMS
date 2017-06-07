@@ -49,7 +49,7 @@ export class MessageService {
   addcustomer(info) {
     console.log('message.service/addcustomer/info', info);
     const options       = { withCredentials: true };
-    return this.myHttp.post(`${this.BASE_URL}/api/addcustomer`, options)
+    return this.myHttp.post(`${this.BASE_URL}/api/addcustomer`, info)
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }

@@ -7,7 +7,7 @@
       <h3>Current Customers:</h3>
       <table *ngFor="let item of items" class="table">
         <tr>
-          <td (click)="listmessage(item.phone)">{{ item.phone }}</td>
+          <td (click)="listmessage(item.phone)">{{ item.firstname }} | {{ item.phone }} | {{ item.duedate }}</td>
           <td (click)="editcustomer(item.phone)"><a [routerLink]="['/edit', item._id]">Edit</a></td>
         </tr>
       </table>
